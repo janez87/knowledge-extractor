@@ -1,17 +1,17 @@
-from .AbstractStrategy import AbstractStrategy
-
-class AST(AbstractStrategy):
+class AST:
     
-    def getEntities(self):
-        query = {}
-        entities = self.db.getUniqueMentions(query)
-        return entities
+    def getEntities(self,seed):
+        query = {
+            "seed":seed["_id"]
+        }
 
-    def computeFeatureVector(self):
-        vector = []
-        print("yeah!")
+        mentions = []
+        entities = self.db.getMentionType(query)
 
-        return vector
+        for e in entities:
+            mentions+=e["types"]
+
+        return mentions
     
-    def __init__(self,db):
+    def __init__(self,db,expertTypes):
         self.db = db

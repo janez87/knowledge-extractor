@@ -1,5 +1,5 @@
 from utils.DBManager import DBManager
-from .Pipeline import Pipeline
+from utils.pipeline import Pipeline
 
 import pprint
 
